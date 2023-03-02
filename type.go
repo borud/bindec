@@ -1,5 +1,7 @@
 package spec
 
+import "reflect"
+
 type Type byte
 
 const (
@@ -16,6 +18,22 @@ const (
 	TypeFloat64
 	TypeString
 )
+
+func (t Type) ReflectType() reflect.Type {
+	return reflect.TypeOf(map[Type]any{
+		TypeUint8:   uint8(0),
+		TypeInt8:    int8(0),
+		TypeUint16:  uint16(0),
+		TypeInt16:   int16(0),
+		TypeUint32:  uint32(0),
+		TypeInt32:   int32(0),
+		TypeUint64:  uint64(0),
+		TypeInt64:   int64(0),
+		TypeFloat32: float32(0.0),
+		TypeFloat64: float64(0.0),
+		TypeString:  "",
+	}[t])
+}
 
 func (t Type) String() string {
 	return [...]string{

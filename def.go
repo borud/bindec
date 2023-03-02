@@ -1,6 +1,8 @@
 package spec
 
-import "encoding/binary"
+import (
+	"encoding/binary"
+)
 
 // Def is the definition of a field.
 type Def struct {
@@ -8,7 +10,8 @@ type Def struct {
 	Type Type
 	// Name of the field.
 	Name string
-	// Whether or not this field is an array
+	// Whether or not this field is an array.  Note that 0 and 1 are both seen as 1, which means
+	// not an array.
 	Count int
 	// Variable holdning the length of the field if derived from payload.  Must precede the field whose length it describes.
 	LengthVar string
